@@ -1,0 +1,184 @@
+/* ========================================== */
+/* איפוס והגדרות משתנים דינמיים */
+/* ========================================== */
+:root {
+  --primary-color: #8b5cf6; /* הצבע הסגול של Eventick */
+  --bg-dark: #0a0a0a;
+  --text-main: #ffffff;
+  --text-dim: #a3a3a3;
+  --skin-color: #ffdbac;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* Lenis Smooth Scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* ========================================== */
+/* Hero Section */
+/* ========================================== */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: radial-gradient(
+    circle at center,
+    #1a1a1a 0%,
+    var(--bg-dark) 100%
+  );
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 7rem);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  font-weight: 900;
+}
+
+.brand-name {
+  color: var(--primary-color);
+  display: inline-block;
+  direction: ltr;
+}
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100px) rotateX(-90deg);
+  transform-origin: top;
+}
+
+.hero-subtitle-inline {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--text-dim);
+  font-weight: 400;
+  opacity: 0;
+  display: block;
+  margin-top: 1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: linear-gradient(45deg, var(--primary-color), #a78bfa);
+  color: var(--text-main);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.cta-button:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================== */
+/* אזור הגלילה האופקית (Features) המורכב */
+/* ========================================== */
+.features-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* מכולת הדמות המארחת */
+.character-container {
+  position: absolute;
+  left: 10%;
+  bottom: 15%;
+  z-index: 100;
+  width: 150px;
+  height: 300px;
+}
+
+/* בועת הדיבור הדינמית - נשלטת ע"י GSAP */
+.speech-bubble-dynamic {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background-color: var(--primary-color);
+  color: var(--text-main);
+  padding: 1rem 1.5rem;
+  border-radius: 20px 20px 0 20px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0; /* מוסתר בהתחלה */
+  transform: scale(0.8) translateY(20px);
+  transform-origin: bottom right;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.speech-bubble-dynamic::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 20px;
+  border: 10px solid transparent;
+  border-top-color: var(--primary-color);
+}
+
+/* מכולת הפאנלים */
+.features-container {
+  display: flex;
+  width: 300vw;
+  height: 100%;
+}
+
+.feature-panel {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.feature-content {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 4rem;
+  max-width: 600px;
+  text-align: right;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  margin-left: 20vw; /* מפנה מקום לדמות */
+}
+
+.feature-content h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.feature-content p {
+  font-size: 1.2rem;
+  color: #d4d4d4;
+  line-height: 1.6;
+}

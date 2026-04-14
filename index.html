@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventick - האפליקציה לאירוע שלכם</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          הכירו את <br />
+          <span class="brand-name">
+            <span class="char">E</span><span class="char">v</span
+            ><span class="char">e</span><span class="char">n</span
+            ><span class="char">t</span><span class="char">i</span
+            ><span class="char">c</span><span class="char">k</span>
+          </span>
+          <br />
+          <span class="hero-subtitle-inline">השדרוג לאירוע שלכם</span>
+        </h1>
+        <a href="contact.html" class="cta-button">להזמנת האפליקציה</a>
+      </div>
+    </section>
+
+    <section class="features-wrapper">
+      <div class="character-container">
+        <div id="character-speech" class="speech-bubble-dynamic"></div>
+
+        <svg
+          id="interactive-host"
+          viewBox="0 0 200 400"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <style>
+              #arm-right,
+              #arm-right-forearm {
+                transform-origin: 10px 10px;
+              }
+              #arm-left,
+              #arm-left-forearm {
+                transform-origin: calc(100% - 10px) 10px;
+              }
+              #leg-right,
+              #leg-left {
+                transform-origin: 50% 10px;
+              }
+            </style>
+          </defs>
+
+          <g id="hidden-assets" opacity="0"></g>
+
+          <g id="leg-left">
+            <rect
+              x="105"
+              y="200"
+              width="22"
+              height="100"
+              rx="11"
+              fill="var(--primary-color)"
+              opacity="0.6"
+            />
+          </g>
+          <g id="leg-right">
+            <rect
+              x="75"
+              y="200"
+              width="22"
+              height="100"
+              rx="11"
+              fill="var(--primary-color)"
+            />
+          </g>
+
+          <g id="arm-left">
+            <rect
+              x="135"
+              y="90"
+              width="60"
+              height="20"
+              rx="10"
+              fill="var(--primary-color)"
+              transform="rotate(-15 135 90)"
+            />
+            <g id="arm-left-forearm" transform="translate(195, 80) rotate(-10)">
+              <rect
+                x="0"
+                y="0"
+                width="50"
+                height="20"
+                rx="10"
+                fill="var(--primary-color)"
+              />
+              <rect
+                x="40"
+                y="-5"
+                width="25"
+                height="25"
+                rx="12.5"
+                fill="var(--skin-color, #ffdbac)"
+              />
+            </g>
+          </g>
+
+          <g id="arm-right">
+            <rect
+              x="5"
+              y="90"
+              width="60"
+              height="20"
+              rx="10"
+              fill="var(--primary-color)"
+              transform="rotate(15 65 90)"
+            />
+            <g id="arm-right-forearm" transform="translate(-45, 80) rotate(10)">
+              <rect
+                x="0"
+                y="0"
+                width="50"
+                height="20"
+                rx="10"
+                fill="var(--primary-color)"
+              />
+              <rect
+                x="-15"
+                y="-5"
+                width="25"
+                height="25"
+                rx="12.5"
+                fill="var(--skin-color, #ffdbac)"
+              />
+            </g>
+          </g>
+
+          <rect
+            x="70"
+            y="80"
+            width="65"
+            height="135"
+            rx="20"
+            fill="var(--primary-color)"
+          />
+
+          <g id="clothes-details">
+            <rect
+              x="90"
+              y="80"
+              width="25"
+              height="30"
+              rx="10"
+              fill="var(--text-main)"
+            />
+            <rect
+              x="98"
+              y="90"
+              width="9"
+              height="15"
+              rx="4.5"
+              fill="var(--primary-color)"
+              opacity="0.5"
+            />
+          </g>
+
+          <g id="geometric-head" fill="var(--skin-color, #ffdbac)">
+            <rect x="80" y="20" width="45" height="45" rx="10" />
+            <rect x="90" y="30" width="25" height="25" rx="6" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="features-container">
+        <div class="feature-panel" id="panel-1">
+          <div class="feature-content">
+            <h2>📸 אלבום משותף</h2>
+            <p>
+              כל הרגעים היפים שלכם ושל האורחים, נאספים אוטומטית למקום אחד. בלי
+              לבקש שישלחו לכם בווטסאפ ובלי לאבד את האיכות.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-panel" id="panel-2">
+          <div class="feature-content">
+            <h2>🚗 לוח טרמפים חכם</h2>
+            <p>
+              מגיעים לאירוע? מציעים טרמפ או מחפשים אחד? הלוח שלנו מחבר בין נהגים
+              לנוסעים מאותו אזור בקליק אחד פשוט.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-panel" id="panel-3">
+          <div class="feature-content">
+            <h2>💬 שובר קרח והיכרויות</h2>
+            <p>
+              ראיתם מישהו מעניין ברחבה? פיצ'ר המינגלינג שלנו מאפשר לכם להכיר
+              אורחים אחרים בצורה קלילה דרך האפליקציה.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
