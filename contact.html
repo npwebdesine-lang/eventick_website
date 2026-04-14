@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventick — צרו קשר</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-transition" id="pageTransition"></div>
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo"
+          ><span class="logo-text"
+            >Event<span class="logo-accent">tick</span></span
+          ></a
+        >
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">בית</a></li>
+          <li><a href="modules.html" class="nav-link">מודולים ומחירים</a></li>
+          <li><a href="contact.html" class="nav-link active">צרו קשר</a></li>
+        </ul>
+        <a href="contact.html" class="nav-cta">התחילו עכשיו</a>
+      </div>
+    </nav>
+
+    <section class="page-hero" style="padding-bottom: 2rem">
+      <div class="page-hero-orb"></div>
+      <div class="section-tag reveal">בואו נדבר</div>
+      <h1 class="section-title reveal">
+        ספרו לנו על<br /><span class="gradient-text">האירוע שלכם</span>
+      </h1>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <h2 class="reveal">
+              נשמח<br /><span class="gradient-text">לעזור לכם</span>
+            </h2>
+            <p class="reveal">
+              ספרו לנו איזה שלב באירוע חשוב לכם לחזק — אנחנו כאן כדי להתאים
+              עבורכם את מודולי ה-STE, MAIN וה-AFTERUSE המושלמים עבורכם.
+            </p>
+            <div class="contact-item reveal">
+              <div class="contact-item-icon">📧</div>
+              <div>
+                <div class="contact-item-label">דוא"ל</div>
+                <div class="contact-item-value">hello@eventick.co.il</div>
+              </div>
+            </div>
+            <div class="contact-item reveal">
+              <div class="contact-item-icon">📱</div>
+              <div>
+                <div class="contact-item-label">טלפון</div>
+                <div
+                  class="contact-item-value"
+                  style="direction: ltr; text-align: right"
+                >
+                  050-000-0000
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-card reveal" id="formCard">
+            <form id="contactForm" novalidate>
+              <div class="form-title">שלחו פנייה</div>
+              <div class="form-grid">
+                <div class="form-group" id="group-name">
+                  <label class="form-label" for="name">שם מלא *</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="name"
+                    placeholder="ישראל ישראלי"
+                  />
+                  <span class="form-error" id="error-name">אנא הכניסו שם</span>
+                </div>
+                <div class="form-group" id="group-phone">
+                  <label class="form-label" for="phone">טלפון *</label>
+                  <input
+                    class="form-input"
+                    type="tel"
+                    id="phone"
+                    placeholder="050-000-0000"
+                    style="direction: ltr; text-align: right"
+                  />
+                  <span class="form-error" id="error-phone"
+                    >אנא הכניסו טלפון</span
+                  >
+                </div>
+                <div class="form-group full-width" id="group-email">
+                  <label class="form-label" for="email">דוא"ל *</label>
+                  <input
+                    class="form-input"
+                    type="email"
+                    id="email"
+                    placeholder="israel@example.com"
+                    style="direction: ltr; text-align: right"
+                  />
+                  <span class="form-error" id="error-email">דוא"ל לא תקין</span>
+                </div>
+                <div class="form-group" id="group-event-type">
+                  <label class="form-label" for="eventType">סוג האירוע *</label>
+                  <select class="form-select" id="eventType">
+                    <option value="" disabled selected>בחרו סוג אירוע</option>
+                    <option value="wedding">חתונה</option>
+                    <option value="barmitzvah">בר מצווה</option>
+                    <option value="corporate">אירוע חברה</option>
+                  </select>
+                  <span class="form-error" id="error-event-type"
+                    >אנא בחרו אירוע</span
+                  >
+                </div>
+                <div class="form-group" id="group-guests">
+                  <label class="form-label" for="guestCount"
+                    >מספר משוער של אורחים *</label
+                  >
+                  <select class="form-select" id="guestCount">
+                    <option value="" disabled selected>בחרו טווח</option>
+                    <option value="50">עד 50</option>
+                    <option value="200">100-200</option>
+                    <option value="500+">מעל 500</option>
+                  </select>
+                  <span class="form-error" id="error-guests"
+                    >אנא בחרו כמות</span
+                  >
+                </div>
+                <div class="form-group full-width" id="group-modules">
+                  <label class="form-label" for="modules"
+                    >מודולים שמעניינים אתכם</label
+                  >
+                  <select class="form-select" id="modules">
+                    <option value="" disabled selected>בחרו (לא חובה)</option>
+                    <option value="afteruse">
+                      רק מודולי AFTERUSE (מזכרות ואלבומים)
+                    </option>
+                    <option value="main">
+                      רק מודולי MAIN (אטרקציות בלייב)
+                    </option>
+                    <option value="ste">
+                      רק מודולי STE (לפני ואחרי האירוע)
+                    </option>
+                    <option value="full">🎊 חבילת Full Cycle המלאה</option>
+                  </select>
+                </div>
+                <div class="form-group full-width" style="margin-top: 20px">
+                  <input
+                    type="date"
+                    id="eventDate"
+                    class="form-input"
+                    required
+                  />
+                  <span class="form-error" id="error-date">אנא הכנס תאריך</span>
+                </div>
+                <button
+                  type="submit"
+                  class="btn form-submit full-width"
+                  id="submitBtn"
+                >
+                  <span class="btn-text">שלחו פנייה ←</span
+                  ><span class="btn-spinner"></span>
+                </button>
+              </div>
+            </form>
+            <div class="form-success" id="formSuccess">
+              <div class="success-icon" id="successIcon">✓</div>
+              <div class="success-title">הפנייה התקבלה! 🎉</div>
+              <a
+                href="index.html"
+                class="btn btn-ghost"
+                style="margin-top: 1rem"
+                >חזרו לדף הבית</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
