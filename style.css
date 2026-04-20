@@ -50,9 +50,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-html {
-  scroll-behavior: smooth;
-}
+/* הוסרה הגדרת scroll-behavior: smooth כדי לאפשר ל-Lenis לעבוד חלק */
 body {
   background: var(--bg);
   color: var(--text);
@@ -72,9 +70,6 @@ button {
   border: none;
   background: none;
   font-family: inherit;
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
 }
 
 ::-webkit-scrollbar {
