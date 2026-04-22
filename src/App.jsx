@@ -20,13 +20,22 @@ export default function App() {
 
   useGSAP(
     () => {
+      // Master scroll timeline — maps entire page scroll to 3D animation
       ScrollTrigger.create({
         trigger: mainRef.current,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1,
-        onUpdate: (st) => setProgress(st.progress),
+        scrub: 0.6, // Smooth ease between scroll and animation
+        onUpdate: (st) => {
+          // Progress: 0 (top) → 1 (bottom)
+          setProgress(st.progress)
+        },
       })
+
+      // Refresh on window resize
+      return () => {
+        ScrollTrigger.getAll().forEach((t) => t.kill())
+      }
     },
     { dependencies: [setProgress] }
   )

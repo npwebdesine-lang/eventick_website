@@ -13,22 +13,46 @@ export default function Phone() {
     if (!ref.current) return
 
     const time = clock.getElapsedTime()
-    const targetRotY = progress * Math.PI * 1.5
-    const targetY = Math.sin(progress * Math.PI) * 0.8
-    const targetScale = 1 - progress * 0.3
 
-    // Main animations driven by scroll
-    ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, targetRotY, delta * 3)
-    ref.current.position.y = THREE.MathUtils.lerp(ref.current.position.y, targetY, delta * 3)
-    ref.current.scale.setScalar(THREE.MathUtils.lerp(ref.current.scale.x, targetScale, delta * 3))
+    // Smooth easing function for more natural feel (ease-in-out cubic)
+    const easeProgress = progress < 0.5
+      ? 4 * progress * progress * progress
+      : 1 - Math.pow(-2 * progress + 2, 3) / 2
 
-    // Idle floating animation when scroll is idle
-    const idleFloat = Math.sin(time * 0.5) * 0.05
-    ref.current.position.z += idleFloat * delta
+    // Refined animation mapping to match timeline:
+    // 0.00 → rotY: 0°, y: 0, scale: 1.0
+    // 0.20 → rotY: 45°, y: +0.4, scale: 1.0
+    // 0.40 → rotY: 90°, y: +0.8, scale: 0.85
+    // 0.60 → rotY: 180°, y: +0.4, scale: 0.75
+    // 0.80 → rotY: 240°, y: 0, scale: 0.7
+    // 1.00 → rotY: 270°, y: 0, scale: 0.7
 
-    // Screen glow pulse
+    const targetRotY = easeProgress * Math.PI * 1.5
+    const targetY = Math.sin(easeProgress * Math.PI) * 0.85
+    const targetScale = THREE.MathUtils.mapLinear(
+      easeProgress,
+      0, 1,
+      1.0, 0.7
+    )
+
+    // Smooth lerp for organic motion
+    ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, targetRotY, delta * 4)
+    ref.current.position.y = THREE.MathUtils.lerp(ref.current.position.y, targetY, delta * 4)
+    ref.current.scale.setScalar(THREE.MathUtils.lerp(ref.current.scale.x, targetScale, delta * 4))
+
+    // Subtle rotation on X axis based on scroll for 3D depth
+    const targetRotX = Math.sin(easeProgress * Math.PI) * 0.15
+    ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, targetRotX, delta * 3)
+
+    // Idle floating animation (more pronounced)
+    const idleFloat = Math.sin(time * 0.6) * 0.08
+    ref.current.position.z = idleFloat
+
+    // Screen glow pulse (faster, more energetic)
     if (screenRef.current) {
-      const glowIntensity = 0.15 + Math.sin(time * 2) * 0.08
+      const basePulse = 0.15 + Math.sin(time * 3) * 0.1
+      const progressGlow = (easeProgress - 0.4) * 0.5 // Ramp up mid-scroll
+      const glowIntensity = Math.max(basePulse, basePulse + progressGlow)
       screenRef.current.material.emissiveIntensity = glowIntensity
     }
   })
