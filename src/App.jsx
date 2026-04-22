@@ -12,6 +12,7 @@ import Bento from './components/dom/Bento'
 import Stats from './components/dom/Stats'
 import CTA from './components/dom/CTA'
 import Footer from './components/dom/Footer'
+import Debug from './components/Debug'
 
 export default function App() {
   const mainRef = useRef()
@@ -55,6 +56,9 @@ export default function App() {
         <CTA />
         <Footer />
       </main>
+
+      {/* Debug Panel */}
+      <Debug />
     </div>
   )
 }

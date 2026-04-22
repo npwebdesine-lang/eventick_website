@@ -7,7 +7,8 @@
       "Bash(npm install *)",
       "Bash(npm run *)",
       "Bash(git add *)",
-      "Bash(git commit -m 'Phase 1: Initialize Vite + React architecture with 3D Canvas layer *)"
+      "Bash(git commit -m 'Phase 1: Initialize Vite + React architecture with 3D Canvas layer *)",
+      "Bash(git commit -m 'Phase 2: Finalize base two-layer architecture with debug panel *)"
     ]
   }
 }
