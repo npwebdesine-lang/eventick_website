@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(mkdir -p src/components/canvas src/components/dom src/styles src/store public)",
+      "Bash(cat)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Phase 1: Initialize Vite + React architecture with 3D Canvas layer *)"
+    ]
+  }
+}
