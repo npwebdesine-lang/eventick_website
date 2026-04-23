@@ -14,6 +14,7 @@ import Bento from './components/dom/Bento'
 import Stats from './components/dom/Stats'
 import CTA from './components/dom/CTA'
 import Footer from './components/dom/Footer'
+import SectionDivider from './components/dom/SectionDivider'
 import Debug from './components/Debug'
 
 export default function App() {
@@ -74,10 +75,15 @@ export default function App() {
       >
         <Navbar />
         <Hero />
+        <SectionDivider id="hero-journey" />
         <Journey />
+        <SectionDivider id="journey-features" />
         <Features />
+        <SectionDivider id="features-bento" />
         <Bento />
+        <SectionDivider id="bento-stats" />
         <Stats />
+        <SectionDivider id="stats-cta" />
         <CTA />
         <Footer />
       </main>

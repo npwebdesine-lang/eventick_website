@@ -1,0 +1,9 @@
+.git
+.gitignore
+README.md
+_backup
+.claude
+node_modules
+.env.local
+.DS_Store
+*.log
