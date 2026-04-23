@@ -1,8 +1,10 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useScrollStore } from './store/scroll'
+import { useMouseStore } from './store/mouse'
+import { useReducedMotion } from './hooks/useReducedMotion'
 import Scene from './components/canvas/Scene'
 import Navbar from './components/dom/Navbar'
 import Hero from './components/dom/Hero'
@@ -17,6 +19,20 @@ import Debug from './components/Debug'
 export default function App() {
   const mainRef = useRef()
   const setProgress = useScrollStore((s) => s.setProgress)
+  const setMouse = useMouseStore((s) => s.setMouse)
+  const prefersReduced = useReducedMotion()
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      // Normalize to -1 to 1 range
+      const x = (e.clientX / window.innerWidth) * 2 - 1
+      const y = -(e.clientY / window.innerHeight) * 2 + 1
+      setMouse(x, y)
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [setMouse])
 
   useGSAP(
     () => {
@@ -25,7 +41,7 @@ export default function App() {
         trigger: mainRef.current,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 0.6, // Smooth ease between scroll and animation
+        scrub: prefersReduced ? 0.1 : 0.6, // Faster response if user prefers reduced motion
         onUpdate: (st) => {
           // Progress: 0 (top) → 1 (bottom)
           setProgress(st.progress)
@@ -37,7 +53,7 @@ export default function App() {
         ScrollTrigger.getAll().forEach((t) => t.kill())
       }
     },
-    { dependencies: [setProgress] }
+    { dependencies: [setProgress, prefersReduced] }
   )
 
   return (

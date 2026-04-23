@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 import Phone from './Phone'
-import Lighting from './Lighting'
+import DynamicLighting from './DynamicLighting'
 import Camera from './Camera'
 
 export default function Scene() {
@@ -25,7 +25,7 @@ export default function Scene() {
     >
       <Suspense fallback={null}>
         <Camera />
-        <Lighting />
+        <DynamicLighting />
         <Phone />
       </Suspense>
     </Canvas>

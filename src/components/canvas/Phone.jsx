@@ -2,12 +2,14 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { RoundedBox } from '@react-three/drei'
 import { useScrollStore } from '../../store/scroll'
+import { useMouseStore } from '../../store/mouse'
 import * as THREE from 'three'
 
 export default function Phone() {
   const ref = useRef()
   const screenRef = useRef()
   const progress = useScrollStore((s) => s.progress)
+  const { x: mouseX, y: mouseY } = useMouseStore((s) => ({ x: s.x, y: s.y }))
 
   useFrame(({ clock }, delta) => {
     if (!ref.current) return
@@ -41,8 +43,18 @@ export default function Phone() {
     ref.current.scale.setScalar(THREE.MathUtils.lerp(ref.current.scale.x, targetScale, delta * 4))
 
     // Subtle rotation on X axis based on scroll for 3D depth
-    const targetRotX = Math.sin(easeProgress * Math.PI) * 0.15
+    const targetRotX = Math.sin(easeProgress * Math.PI) * 0.15 + mouseY * 0.1
     ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, targetRotX, delta * 3)
+
+    // Mouse parallax: subtle tilt based on mouse position
+    const mouseRotX = mouseY * 0.08
+    const mouseRotY = mouseX * 0.08
+    ref.current.rotation.x = THREE.MathUtils.lerp(
+      ref.current.rotation.x,
+      targetRotX + mouseRotX,
+      delta * 3
+    )
+    ref.current.rotation.z = THREE.MathUtils.lerp(ref.current.rotation.z, mouseRotY, delta * 3)
 
     // Idle floating animation (more pronounced)
     const idleFloat = Math.sin(time * 0.6) * 0.08
